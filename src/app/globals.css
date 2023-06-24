@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .px-global {
+    @apply px-4 md:px-[2rem] lg:px-[6rem]
+  }
+
+  .btn{
+    @apply flex items-center justify-center px-4 py-2 rounded-full
+  }
+
+  .btn-primary{
+    @apply bg-primary-500 text-white hover:bg-primary-500/80 transition
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
