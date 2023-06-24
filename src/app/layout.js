@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} bg-light-500 text-dark-500 relative `}>
       <Navbar />
-        <main className="py-[4rem]">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );
