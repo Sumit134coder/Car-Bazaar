@@ -1,10 +1,16 @@
+"use client"
 
 import Image from 'next/image'
 import heroBg from '../../public/hero-bg.png'
+import pattern from '../../public/pattern.png'
 import hero from '../../public/hero.png'
-import { Searchbar , Card } from '@/components'
+import { Searchbar , Card , Modal } from '@/components'
+import { useState } from 'react'
 
 export default function Home() {
+
+  const [open , setOpen] = useState(false)
+
   return (
     <div className=''>
       {/* ---hero section--- */}
@@ -18,8 +24,8 @@ export default function Home() {
 
         {/* --images--- */}
         <div className='h-[20rem] mt-[2rem] md:mt-0 md:h-auto relative overflow-hidden'>
-          <Image src={heroBg} height={1000} width={1000} className='h-full w-full absolute ' />
-          <Image src={hero} height={1000} width={1000} className='h-auto w-auto absolute bottom-0' />
+          <Image src={heroBg} height={1000} width={1000} className='h-full w-full absolute'  alt='background' />
+          <Image src={hero} height={1000} width={1000} className='h-auto w-auto absolute bottom-0' alt='hero-car' />
         </div>
       </section>
 
@@ -38,9 +44,49 @@ export default function Home() {
 
         {/* ---card container---- */}
         <div>
-          <Card />
+          <Card onView={()=>setOpen(true)} />
         </div>
       </section>
+
+      <Modal isOpen={open} closeModal={setOpen}>
+        {/* ----image container ------ */}
+        <div>
+          <div className='relative h-[10rem]'>
+            <Image src={pattern} className='h-full' alt='pattern' />
+            <Image src={hero} className='absolute inset-3 h-full w-auto m-auto' alt='banner-hero' />
+          </div>
+          <div className='mt-3 flex justify-between items-center gap-3'>
+            <button type='button' className='p-4 rounded bg-gray-200'>
+            <Image src={hero} className='h-[5rem] w-auto m-auto' alt='btn-hero' />
+            </button>
+            <button type='button' className='p-4 rounded bg-gray-200'>
+            <Image src={hero} className='h-[5rem] w-auto m-auto' alt='btn-hero' />
+            </button>
+            <button type='button' className='p-4 rounded bg-gray-200'>
+            <Image src={hero} className='h-[5rem] w-auto m-auto' alt='btn-hero' />
+            </button>
+          </div>
+        </div>
+
+        <div className='mt-4 flex flex-col gap-2'>
+          <div className='flex items-center justify-between'>
+            <h5 className='font-semibold'>Property Name</h5>
+            <p>78</p>
+          </div>
+          <div className='flex items-center justify-between'>
+            <h5 className='font-semibold'>Property Name</h5>
+            <p>78</p>
+          </div>
+          <div className='flex items-center justify-between'>
+            <h5 className='font-semibold'>Property Name</h5>
+            <p>78</p>
+          </div>
+          <div className='flex items-center justify-between'>
+            <h5 className='font-semibold'>Property Name</h5>
+            <p>78</p>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
