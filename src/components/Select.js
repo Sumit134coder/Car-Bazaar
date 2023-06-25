@@ -32,7 +32,7 @@ const Select = ({
         setSelected(obj);
       }}
     >
-      <Listbox.Button className="bg-white rounded-lg py-2 px-4 w-full flex justify-between items-center">
+      <Listbox.Button className="bg-white rounded-lg py-2 px-4 w-full flex justify-between items-center whitespace-nowrap">
         <span>{selected ? selected?.name : placeholder}</span>
         <HiOutlineSelector className="ml-[2rem]" />
       </Listbox.Button>

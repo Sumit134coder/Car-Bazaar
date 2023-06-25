@@ -7,7 +7,7 @@ const orbitron = Orbitron({
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-global py-4 fixed w-full z-50 bg-light-500">
+    <nav className="flex items-center justify-between px-global py-4 fixed w-full z-40 bg-light-500">
         <div className={`${orbitron.className} text-primary-500 font-bold text-xl`}>
             Car Bazaar
         </div>
