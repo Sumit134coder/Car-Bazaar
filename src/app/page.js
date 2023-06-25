@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import heroBg from '../../public/hero-bg.png'
 import hero from '../../public/hero.png'
-import { Searchbar } from '@/components'
+import { Searchbar , Card } from '@/components'
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
       </section>
 
       {/* ---Catalogue----- */}
-      <section className='px-global'>
+      <section className='px-global my-6'>
         {/* ---heading--- */}
         <div>
           <h3 className='text-[3rem] font-semibold'>Our Car Collection</h3>
@@ -38,7 +38,7 @@ export default function Home() {
 
         {/* ---card container---- */}
         <div>
-          Card
+          <Card />
         </div>
       </section>
     </div>

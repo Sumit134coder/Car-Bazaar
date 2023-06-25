@@ -30,5 +30,66 @@
   }
 }
 
-body {
+* , *:hover{
+  transition: .3s ease-in-out;
+}
+
+.card{
+  background : white
+}
+
+.card:hover {
+  background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background-size: 300%;
+animation: 3s bg-move infinite alternate-reverse;
+  transition: .4s ease-in-out;
+  scale: 1.02;
+}
+
+@keyframes bg-move {
+  from {
+    background-position: 0%;
+  }
+
+  to{
+    background-position: 100%;
+  }
+}
+
+.card-button {
+  display: none;
+  background-color: #2980B9;
+  border-radius: 1rem;
+  padding: 4px 8px;
+  color: white;
+  font-weight: 700;
+}
+
+.card-button .btn-icon {
+  animation: 1s swing infinite alternate;
+}
+
+@keyframes swing {
+  
+  from {
+    transform: translateX(-10px);
+  }
+
+  to{
+    transform: translateX(0px);
+  }
+
+}
+
+.card:hover .card-button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card:hover .stats-container {
+  display: none;
 }
