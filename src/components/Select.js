@@ -24,7 +24,7 @@ const Select = ({
   return (
     <Listbox
     as='div'
-    className='max-w-[10rem]'
+    className='max-w-[10rem] relative'
       value={selected}
       onChange={(e) => {
         const obj = options.find(el => el.value === e)
@@ -36,7 +36,7 @@ const Select = ({
         <span>{selected ? selected?.name : placeholder}</span>
         <HiOutlineSelector className="ml-[2rem]" />
       </Listbox.Button>
-      <Listbox.Options className='mt-2 bg-white rounded py-2'>
+      <Listbox.Options className='mt-2 bg-white rounded py-2 absolute z-20 w-full'>
         {options.map((option) => (
           <Listbox.Option
             key={option.value}

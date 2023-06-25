@@ -64,7 +64,7 @@ const Searchbar = () => {
         <Combobox
           value={company}
           onChange={setCompany}
-          className="w-min"
+          className="w-min relative"
           as="div"
         >
           <div className="relative">
@@ -79,7 +79,7 @@ const Searchbar = () => {
               placeholder="Tesla..."
             />
           </div>
-          <Combobox.Options className="bg-white rounded-lg shadow p-2 mt-2">
+          <Combobox.Options className="bg-white rounded-lg shadow p-2 mt-2 absolute w-full">
             {filteredResults("model").length ? (
               filteredResults("model").map((el) => (
                 <Combobox.Option key={el} value={el}>
