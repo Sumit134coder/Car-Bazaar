@@ -7,7 +7,14 @@ import hero from "../../public/hero.png";
 import { Searchbar, Card, Modal } from "@/components";
 import { useState, useEffect } from "react";
 import { getCars } from "@/services/api";
+import { Tilt_Prism } from "next/font/google";
 // import { getCars } from '@/services/api'
+
+const tilt = Tilt_Prism({
+  subsets: ['latin'],
+  fallback:[ 'system-ui', 'arial'],
+  display: 'swap'
+})
 
 export default function Home() {
   // const results =  await getCars()
@@ -27,7 +34,7 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-2 h-auto md:h-screen py-[4rem]">
         {/* --text--- */}
         <div className="px-global h-full flex flex-col justify-evenly gap-[2rem]">
-          <h1 className="text-[4rem] font-bold leading-tight">
+          <h1 className={`text-[4rem] font-bold leading-tight ${tilt.className}`}>
             Find, book, rent a car <br /> - quick and super easy!
           </h1>
           <p className="text-[2rem]">
@@ -62,7 +69,7 @@ export default function Home() {
       <section className="px-global my-6">
         {/* ---heading--- */}
         <div>
-          <h3 className="text-[3rem] font-semibold">Our Car Collection</h3>
+          <h3 className={`text-[3rem] font-semibold ${tilt.className}`}>Our Car Collection</h3>
           <p className="text-lg">Explore our collection you might like</p>
         </div>
 
@@ -72,7 +79,7 @@ export default function Home() {
         </div>
 
         {/* ---card container---- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
           {results.map((car,index) => (
             <Card
               key={`${car?.model}-${car?.fuel_type}-${car?.year}-${index}`}
