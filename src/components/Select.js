@@ -10,16 +10,6 @@ const Select = ({
 }) => {
   const [selected, setSelected] = useState();
 
-  const dummy = [
-    {
-      name: "test",
-      value: "test",
-    },
-    {
-      name: "test1",
-      value: "test2",
-    },
-  ];
 
   return (
     <Listbox
@@ -29,6 +19,7 @@ const Select = ({
       onChange={(e) => {
         const obj = options.find(el => el.value === e)
         console.log(obj)
+        onChange(e)
         setSelected(obj);
       }}
     >

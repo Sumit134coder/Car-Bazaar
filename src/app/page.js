@@ -16,6 +16,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
 
+
   useEffect(() => {
     getCars().then((el) => setResults(el));
   }, []);
@@ -67,14 +68,14 @@ export default function Home() {
 
         {/* ----search bars---- */}
         <div className="my-6">
-          <Searchbar />
+          <Searchbar onSearch={e => getCars(e).then((el) => setResults(el))} />
         </div>
 
         {/* ---card container---- */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {results.map((car) => (
+          {results.map((car,index) => (
             <Card
-              key={car?.model}
+              key={`${car?.model}-${car?.fuel_type}-${car?.year}-${index}`}
               onView={() => {
                 setSelected(car);
                 setOpen(true);

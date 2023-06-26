@@ -10,7 +10,7 @@ import rightArrow from '../../public/right-arrow.svg';
 
 const Card = ({onView=()=>{} , car={}}) => {
   return (
-    <div className="bg-white rounded-lg p-4 max-w-[20rem] card">
+    <div className="bg-white rounded-lg p-4 max-w-[20rem] card flex flex-col justify-between" key={`${car?.model}-${car?.fuel_type}-${car?.year}`}>
       <h4 className="text-[1.5rem] font-semibold">
         <span className="capitalize">{car?.make}</span>
         <span className="capitalize"> {car?.model}</span>

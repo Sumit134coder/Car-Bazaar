@@ -10,12 +10,12 @@ import { AiOutlineCheck } from "react-icons/ai";
 import Select from "./Select";
 import { FaMagnifyingGlass } from 'react-icons/fa6'
 
-const dummy = [
-  "Durward Reynolds",
-  "Kenton Towne",
-  "Therese Wunsch",
-  "Benedict Kessler",
-  "Katelyn Rohan",
+const manufactures = [
+  "Tesla",
+  "Toyota",
+  "Hyundai",
+  "Mercedes",
+  "Nissan",
 ];
 
 const fuelType = [
@@ -47,23 +47,39 @@ const modelYear = [
     },
 ]
 
-const Searchbar = () => {
+const Searchbar = ({ onSearch = () => {} }) => {
   const [company, setCompany] = useState("");
+  const [searchQuery , setSearchQuery] = useState({
+    make: '',
+    model: '',
+    fuel_type: '',
+    year: '',
+  })
   const [query, setQuery] = useState("");
 
   const filteredResults = (searchFrom = "model") => {
     return query === ""
-      ? dummy
-      : dummy.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
+      ? manufactures
+      : manufactures.filter((el) => el.toLowerCase().includes(query.toLowerCase()));
   };
+
+  const handleSearch = () => {
+
+    onSearch(searchQuery)
+  }
 
   return (
     <div className="flex justify-between">
       <div className="flex gap-2">
         {/* --company--- */}
         <Combobox
-          value={company}
-          onChange={setCompany}
+          value={searchQuery.make}
+          onChange={(e) => {
+            let temp = { ...searchQuery}
+            temp.make = e.toLowerCase();
+
+            setSearchQuery(temp);
+          }}
           className="w-min relative"
           as="div"
         >
@@ -105,18 +121,31 @@ const Searchbar = () => {
           <input
             type="text"
             placeholder="Model"
+            onChange={(e) => {
+                let temp = { ...searchQuery};
+                temp.model = e.target.value.toLowerCase();
+                setSearchQuery(temp);
+            }}
             className="outline-primary-500 pl-[3rem] py-2 rounded-full"
           />
-          <Image src={modelLogo} className="absolute inset-1 h-8 w-8" />
+          <Image src={modelLogo} className="absolute inset-1 h-8 w-8" alt='model' />
         </div>
 
-        <button type='button' className="btn p-3 shadow hover:shadow-lg transition bg-light-500 -ml-8 z-10"><FaMagnifyingGlass/></button>
+        <button type='button'onClick={()=>handleSearch()} className="btn p-3 shadow hover:shadow-lg transition bg-light-500 -ml-8 z-10"><FaMagnifyingGlass/></button>
       </div>
 
       {/* ---selections--- */}
       <div className="flex gap-4">
-        <Select placeholder="Fuel Type.." options={fuelType} />
-        <Select placeholder="Model Year.." options={modelYear} />
+        <Select placeholder="Fuel Type.." options={fuelType} onChange={(e) => {
+           let temp = { ...searchQuery};
+                temp.fuel_type = e.toLowerCase();
+                setSearchQuery(temp);
+        }} />
+        <Select placeholder="Model Year.." options={modelYear}  onChange={(e) => {
+           let temp = { ...searchQuery};
+                temp.year = e;
+                setSearchQuery(temp);
+        }} />
       </div>
     </div>
   );
